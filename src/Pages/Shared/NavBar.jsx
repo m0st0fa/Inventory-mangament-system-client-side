@@ -19,13 +19,13 @@ const NavBar = () => {
             {!user ? (
                 <>
                     <li> <NavLink to='/'>Home</NavLink></li>
-                    <li> <NavLink to='/login'>Login</NavLink></li>
+                    <li> <NavLink to='/createShop'>Create Store</NavLink></li>
                     <li> <NavLink to='/signup'>Register</NavLink></li>
                 </>
             ) : (
                 <>
                     <li> <NavLink to='/'>Home</NavLink></li>
-                    <li> <NavLink to='/store'>Create Store</NavLink></li>
+                    <li> <NavLink to='/createShop'>Create Store</NavLink></li>
                     <li> <NavLink to='/dashboard'>Dashboard</NavLink></li>
                 </>
             )}
@@ -44,7 +44,7 @@ const NavBar = () => {
                 </div>
                 <div>
                     <div className="flex items-center gap-2">
-                        <img className="w-48 rounded-lg" src="https://i.ibb.co/pR8V4t2/logo.png" alt="img" />
+                        <img className="w-48 rounded-lg" src="https://i.ibb.co/ZdRByNW/bdtask-logo.webp" alt="img" />
                     </div>
                 </div>
             </div>

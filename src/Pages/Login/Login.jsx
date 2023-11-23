@@ -36,7 +36,6 @@ const Login = () => {
     const auth = getAuth(app)
     const provider = new GoogleAuthProvider()
     const googleSignIn = () => {
-
         signInWithPopup(auth, provider)
             .then(result => {
                 console.log(result.user)

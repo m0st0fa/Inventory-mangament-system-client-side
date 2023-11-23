@@ -6,11 +6,13 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import ErrorElement from "../Components/ErrorElement";
+import CreateShop from "../Pages/Home/CreateShop/CreateShop";
+import PrivateRoutes from "./PrivateRoutes";
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
-        errorElement:<ErrorElement></ErrorElement>,
+        errorElement: <ErrorElement></ErrorElement>,
         children: [
             {
                 path: '/',
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/createShop',
+               element:<PrivateRoutes> <CreateShop></CreateShop></PrivateRoutes>
             }
         ]
     },
