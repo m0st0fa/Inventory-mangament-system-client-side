@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import app from "../../firebase/Firebase.config";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const { signIn } = useAuth()
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target

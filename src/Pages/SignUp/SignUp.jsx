@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
+
 import { Link } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../firebase/Firebase.config";
+import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser } = useAuth()
 
     const handleSignUp = (e) => {
         e.preventDefault();

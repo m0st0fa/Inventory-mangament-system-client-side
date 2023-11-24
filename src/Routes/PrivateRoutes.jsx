@@ -6,8 +6,8 @@ import { Navigate } from "react-router-dom";
 const PrivateRoutes = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     useEffect(() => {
-        console.log("User:", user);
-        console.log("Loading:", loading);
+        // console.log("User:", user);
+        // console.log("Loading:", loading);
     }, [user, loading]);
 
     if (loading) {
