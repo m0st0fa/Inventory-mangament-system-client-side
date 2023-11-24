@@ -51,82 +51,90 @@ const CreateShop = () => {
     }
 
     return (
-        <div>
-            <div>
-                <form onSubmit={handleSubmit(onSubmit)} >
-                    <div className=" flex gap-4 p-4">
-                        <div className="form-control md:w-1/2 my-6">
-                            <label className="label">
-                                <span className="label-text">Shop Name</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Shop Name"
-                                {...register('name', { required: true })}
-                                required
-                                className="input input-bordered w-full" />
-                        </div>
-                        <div className="form-control md:w-1/2 my-6">
-                            <label className="label">
-                                <span className="label-text">Shop Location</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Shop Location"
-                                {...register('location', { required: true })}
-                                required
-                                className="input input-bordered w-full" />
-                        </div>
-                    </div>
-                    {/* Shop owner name and shop owner email */}
-                    <div className=" flex gap-4 p-4">
-                        <div className="form-control md:w-1/2">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter your Email"
-                                {...register('email', { required: true })}
-                                required
-                                className="input input-bordered w-full" />
-                        </div>
-                        <div className="form-control md:w-1/2">
-                            <label className="label">
-                                <span className="label-text">Owner Name</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Shop Location"
-                                {...register('owner_name', { required: true })}
-                                required
-                                className="input input-bordered w-full" />
-                        </div>
-                    </div>
-                    <div className="flex gap-6">
-                    </div>
-                    {/* shop Description */}
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Shop Description</span>
-                        </label>
-                        <textarea {...register('description')} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
-                    </div>
-
-                    <div className="form-control w-full my-6">
-                        <label className="label">
-                            <span className=" font-semibold text-2xl text-red-400 ">Shop Logo</span>
-                        </label>
-                        <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
-                    </div>
-
-                    <button className="btn btn-success mb-3">
-                        Create-Shop <CiShop className="font-bold" />
-
-                    </button>
-                </form>
+        <div className="max-w-7xl rounded-2xl p-6 mt-5 mx-auto bg-slate-300 shadow-lg">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex flex-wrap -mx-4">
+            <div className="w-full md:w-1/2 px-4 mb-4">
+              <label className="label">
+                <span className="label-text">Shop Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Shop Name"
+                {...register('name', { required: true })}
+                required
+                className="input input-bordered w-full"
+              />
             </div>
-        </div>
+            <div className="w-full md:w-1/2 px-4 mb-4">
+              <label className="label">
+                <span className="label-text">Shop Location</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Shop Location"
+                {...register('location', { required: true })}
+                required
+                className="input input-bordered w-full"
+              />
+            </div>
+          </div>
+      
+          <div className="flex flex-wrap -mx-4">
+            <div className="w-full md:w-1/2 px-4 mb-4">
+              <label className="label">
+                <span className="label-text"> Owner Email</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your Email"
+                {...register('email', { required: true })}
+                required
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="w-full md:w-1/2 px-4 mb-4">
+              <label className="label">
+                <span className="label-text">Owner Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Owner Name"
+                {...register('owner_name', { required: true })}
+                required
+                className="input input-bordered w-full"
+              />
+            </div>
+          </div>
+      
+          <div className="mb-4">
+            <label className="label">
+              <span className="label-text">Shop Description</span>
+            </label>
+            <textarea
+              {...register('description')}
+              className="textarea textarea-bordered h-24 w-full"
+              placeholder="Description"
+            ></textarea>
+          </div>
+      
+          <div className="mb-4">
+            <label className="label block text-lg text-red-400 font-semibold mb-2">
+              Shop Logo
+            </label>
+            <input
+              {...register('image', { required: true })}
+              type="file"
+              className="file-input w-full max-w-xs"
+            />
+          </div>
+      
+          <button className="btn btn-success">
+            Create Shop <CiShop className="font-bold" />
+          </button>
+        </form>
+      </div>
+      
     );
 };
 

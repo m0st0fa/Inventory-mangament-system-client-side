@@ -1,18 +1,21 @@
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import app from "../../firebase/Firebase.config";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import useAuth from "../../Hooks/useAuth";
 
 
 const Login = () => {
+    const location = useLocation()
+    const navigate = useNavigate()
+    console.log('login page location', location)
     const { signIn } = useAuth()
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        console.log(email, password)
+        // console.log(email, password)
         signIn(email, password)
             .then(result => {
                 console.log(result.user)
@@ -25,6 +28,7 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp',
                     },
                 });
+                navigate(location?.state ? location.state : '/'); 
 
             })
             .catch(error => {
