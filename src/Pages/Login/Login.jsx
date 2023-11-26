@@ -1,9 +1,7 @@
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import app from "../../firebase/Firebase.config";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import useAuth from "../../Hooks/useAuth";
-
+import SocialLogin from "../../Components/SocialLogin";
 
 const Login = () => {
     const location = useLocation()
@@ -36,18 +34,7 @@ const Login = () => {
             })
 
     }
-    const auth = getAuth(app)
-    const provider = new GoogleAuthProvider()
-    const googleSignIn = () => {
-        signInWithPopup(auth, provider)
-            .then(result => {
-                console.log(result.user)
-
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }
+  
 
     return (
         <div className="bg-gray-100 min-h-screen flex items-center justify-center">
@@ -80,12 +67,13 @@ const Login = () => {
                 <div className="text-center mt-4">
                     <p className="text-gray-600">Do not Have an Account? <Link className="text-green-500 font-semibold" to='/signup'>Register here</Link></p>
                     <div className="flex justify-center mt-2">
-                        <button onClick={googleSignIn} className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600 mx-2">
+                        {/* <button onClick={googleSignIn} className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600 mx-2">
                             Google
                         </button>
                         <button onClick={googleSignIn} className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 mx-2">
                             Facebook
-                        </button>
+                        </button> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,9 @@ import SignUp from "../Pages/SignUp/SignUp";
 import ErrorElement from "../Components/ErrorElement";
 import CreateShop from "../Pages/Home/CreateShop/CreateShop";
 import PrivateRoutes from "./PrivateRoutes";
+import DashBoard from "../Pages/DashBoard/DashBoard";
+import AddProduct from "../Pages/DashBoard/AddProduct/AddProduct";
+import ProductSection from "../Pages/DashBoard/ProductSection/ProductSection";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -28,7 +31,23 @@ const router = createBrowserRouter([
             },
             {
                 path: '/createShop',
-               element:<PrivateRoutes> <CreateShop></CreateShop></PrivateRoutes>
+                element: <PrivateRoutes> <CreateShop></CreateShop></PrivateRoutes>
+            }
+        ]
+    },
+    // Shop Manager DashBoard
+    {
+        path: 'dashboard',
+        errorElement: <ErrorElement></ErrorElement>,
+        element: <DashBoard></DashBoard>,
+        children: [
+            {
+                path: 'addProduct',
+                element: <AddProduct></AddProduct>
+            },
+            {
+                path: 'productSection',
+                element: <ProductSection></ProductSection>
             }
         ]
     },

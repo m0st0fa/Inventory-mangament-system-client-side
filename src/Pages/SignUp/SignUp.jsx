@@ -1,8 +1,8 @@
 
 import { Link } from "react-router-dom";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import app from "../../firebase/Firebase.config";
+
 import useAuth from "../../Hooks/useAuth";
+import SocialLogin from "../../Components/SocialLogin";
 
 const SignUp = () => {
     const { createUser } = useAuth()
@@ -26,19 +26,7 @@ const SignUp = () => {
                 console.error("Sign-up error:", error);
             });
     };
-    const auth = getAuth(app)
-    const provider = new GoogleAuthProvider()
-    const googleSignIn = () => {
-
-        signInWithPopup(auth, provider)
-            .then(result => {
-                console.log(result.user)
-
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }
+  
 
     return (
         <div className="bg-gray-100 min-h-screen flex items-center justify-center">
@@ -77,14 +65,7 @@ const SignUp = () => {
                 </form>
                 <div className="text-center mt-4">
                     <p className="text-gray-600">Already Have An account? <Link className="text-green-500 font-semibold" to='/login'>Login here</Link></p>
-                    <div className="flex justify-center mt-2">
-                        <button onClick={googleSignIn} className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600 mx-2">
-                            Google
-                        </button>
-                        <button onClick={googleSignIn} className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 mx-2">
-                            Facebook
-                        </button>
-                    </div>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>
