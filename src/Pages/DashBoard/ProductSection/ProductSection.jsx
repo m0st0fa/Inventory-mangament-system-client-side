@@ -1,13 +1,16 @@
+import { FaTrashAlt } from "react-icons/fa";
+import { GrUpdate } from "react-icons/gr";
 import Swal from "sweetalert2";
-import { AiTwotoneDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import useAllProduct from "../../../Hooks/useAllProduct";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { FaPlusMinus } from "react-icons/fa6";
+
 
 
 const ProductSection = () => {
-    // const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2)
+    const [product, refetch] = useAllProduct();
     const axiosSecure = useAxiosSecure()
-    const handleClickToDelete = id => {
+    const handleClickToDeleteProduct = product => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -18,11 +21,10 @@ const ProductSection = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-
-                axiosSecure.delete(`/carts/${id}`)
+                axiosSecure.delete(`/addProduct/${product._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
-                            // refetch()
+                            refetch();
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
@@ -31,65 +33,73 @@ const ProductSection = () => {
                         }
                     })
             }
+
         });
     }
-    // 
+    // console.log(product)
     return (
         <div>
-           
-            <div className="overflow-x-auto">
-                <table className="table  w-full">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>sale Count</th>
-                            <th>Update</th>
-                            <th> Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div>
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>quantity</th>
+                                <th>Discount</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                product.map((item, index) => <tr key={item._id}>
+                                    <td>
+                                        {index + 1}
+                                    </td>
+                                    <td>
+                                        {item.name}
+                                    </td>
+                                    <td>
+                                        <div className="flex items-center">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="text-left font-bold text-xl">{item.quantity}</td>
+                                    <td className="text-left text-2xl">${item.discount}</td>
+                                    <td>
+                                        <Link to={`/dashboard/updateProduct/${item._id}`}>
+                                            <button 
+                                                className="btn btn-ghost btn-lg bg-green-500">
+                                                <GrUpdate className="text-white"></GrUpdate>
+                                            </button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() => handleClickToDeleteProduct(item)}
+                                            className="btn btn-ghost text-4xl text-red-500">
+                                            <FaTrashAlt className="text-red-600"></FaTrashAlt>
+                                        </button>
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
 
-                        <th>
-                            1
-                        </th>
-                        <td>
-                            <div className="flex items-center gap-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td className="text-2xl text-gray-600 ">
-                            name
-                        </td>
-                        <td>$Quantity</td>
-                        <td>Count</td>
-                        <th>
-                            <button
-                                onClick={() => handleClickToDelete}
-                                className="btn btn-ghost btn-lg">
-                                < FaPlusMinus className="text-red-600 text-4xl font-bold"></FaPlusMinus>
-                            </button>
-                        </th>
-                        <th>
-                            <button
-                                onClick={() => handleClickToDelete}
-                                className="btn btn-ghost btn-lg">
-                                <AiTwotoneDelete className="text-red-600 text-4xl font-bold"></AiTwotoneDelete>
-                            </button>
-                        </th>
 
-                    </tbody>
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     );
 };
 
 export default ProductSection;
+

@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "plan": "Starter Plan",
+        "price": "$9/month",
+        "description": "Perfect for individuals and small projects.",
+        "additionalInfo": "Basic features and affordable pricing."
+    },
+    {
+        "id": 4,
+        "plan": "Standard Plan",
+        "price": "$29/month",
+        "description": "Ideal for general business use with essential features.",
+        "additionalInfo": "Balanced features for business success."
+    },
+    {
+        "id": 2,
+        "plan": "Business Plan",
+        "price": "$49/month",
+        "description": "Great for growing businesses with moderate needs.",
+        "additionalInfo": "Enhanced features for business scalability."
+    }
+    
+]

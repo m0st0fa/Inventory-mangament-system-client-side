@@ -11,6 +11,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import DashBoard from "../Pages/DashBoard/DashBoard";
 import AddProduct from "../Pages/DashBoard/AddProduct/AddProduct";
 import ProductSection from "../Pages/DashBoard/ProductSection/ProductSection";
+import UpdateProduct from "../Pages/DashBoard/UpdateProduct";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
             {
                 path: 'productSection',
                 element: <ProductSection></ProductSection>
+            },
+            {
+                path: 'updateProduct/:id',
+                element: <UpdateProduct></UpdateProduct>,
+                loader: ({params}) => fetch(`http://localhost:5001/addProduct/${params.id}`)
             }
         ]
     },

@@ -1,7 +1,6 @@
 import { FaCartPlus, FaHome, FaShopify, FaTable, FaUtensils, } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaCcAmazonPay } from "react-icons/fa";
-import { BsMenuButtonWideFill } from "react-icons/bs";
 import { GrLogout } from "react-icons/gr";
 import { FaRegPlusSquare } from "react-icons/fa";
 
@@ -38,9 +37,9 @@ const DashBoard = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/home">
+                                    <NavLink to="/">
                                         <FaHome />
-                                        Manger Home
+                                         Home
                                     </NavLink>
                                 </li>
                                 <li>
@@ -52,19 +51,7 @@ const DashBoard = () => {
                                 <li>
                                     <NavLink to="/dashboard/productSection">
                                         <FaTable />
-                                        Product section Table
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/totalProduct">
-                                        <BsMenuButtonWideFill />
-                                        Total Product
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/cart">
-                                        <BsMenuButtonWideFill />
-                                        Cart
+                                        All Product
                                     </NavLink>
                                 </li>
                                 <li>

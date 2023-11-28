@@ -1,9 +1,13 @@
-// import Banner from "./Banner/Banner";
+import Banner from "./Banner/Banner";
+import PricingCard from "./PricingCard";
+import Testimonials from "./Testimonials.JSX";
 
 const Home = () => {
     return (
         <div>
-            {/* <Banner></Banner> */}
+            <Banner></Banner>
+            <PricingCard></PricingCard>
+            <Testimonials></Testimonials>
             
         </div>
     );

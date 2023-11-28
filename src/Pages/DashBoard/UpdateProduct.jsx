@@ -1,28 +1,26 @@
-
-import { CiShop } from "react-icons/ci";
+/* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { useEffect, useState } from "react";
+
+import { CiShop } from "react-icons/ci";
+import { useLoaderData } from "react-router-dom";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const image_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
-const AddProduct = () => {
-    const [shopData, setShopData] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5001')
-            .then(res => res.json())
-            .then(data => setShopData(data))
-    }, [])
-//    console.log(shopData)
-    const { register, handleSubmit, reset } = useForm();
-    const axiosPublic = useAxiosPublic()
-    const axiosSecure = useAxiosSecure()
+const UpdateProduct = () => {
+    const { name, quantity, category, location, cost, margin, discount, description,_id } = useLoaderData();
+
+
+    const { register, handleSubmit } = useForm();
+    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const onSubmit = async (data) => {
-        // image  upload to imgBB and the get the url 
+        console.log(data)
+        // image upload to imageBB and then get an url
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
@@ -30,8 +28,7 @@ const AddProduct = () => {
             }
         });
         if (res.data.success) {
-            // Sent the product item into the database 
-            const createShop = {
+            const menuItem = {
                 name: data.name,
                 quantity: data.quantity,
                 category: data.category,
@@ -41,25 +38,22 @@ const AddProduct = () => {
                 discount: data.discount,
                 description: data.description,
                 image: res.data.data.display_url,
-                Shop_Name: shopData.name,
-                ShopId: shopData._id
             }
-            // post to database
-            const productRes = await axiosSecure.post('/addProduct', createShop)
+            // 
+            const productRes = await axiosSecure.patch(`/addProduct/${_id}`, menuItem);
             console.log(productRes.data)
-            if (productRes.data.insertedId) {
-                reset();
+            if (productRes.data.modifiedCount > 0) {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} is added to the productCollection`,
+                    title: `${data.name} is updated to the menu.`,
                     showConfirmButton: false,
                     timer: 1500
                 });
             }
         }
-        console.log('with image url', res.data)
-    }
+        console.log('with image url', res.data);
+    };
 
     return (
         <div className="max-w-7xl rounded-2xl p-6 mt-5 mx-auto bg-slate-300 shadow-lg">
@@ -71,9 +65,9 @@ const AddProduct = () => {
                         </label>
                         <input
                             type="text"
+                            defaultValue={name}
                             placeholder="Product Name"
-                            {...register('name', { required: true })}
-                            required
+                            {...register('name')}
                             className="input input-bordered w-full"
                         />
                     </div>
@@ -84,9 +78,10 @@ const AddProduct = () => {
                         </label>
                         <input
                             type="text"
+                            defaultValue={quantity}
                             placeholder="Product Quantity"
-                            {...register('quantity', { required: true })}
-                            required
+                            {...register('quantity')}
+
                             className="input input-bordered w-full"
                         />
                     </div>
@@ -99,9 +94,10 @@ const AddProduct = () => {
                         </label>
                         <input
                             type="text"
+                            defaultValue={category}
                             placeholder="Enter the Product Category"
-                            {...register('category', { required: true })}
-                            required
+                            {...register('category')}
+
                             className="input input-bordered w-full"
                         />
                     </div>
@@ -112,9 +108,10 @@ const AddProduct = () => {
                         </label>
                         <input
                             type="text"
+                            defaultValue={location}
                             placeholder="Location"
-                            {...register('location', { required: true })}
-                            required
+                            {...register('location')}
+
                             className="input input-bordered w-full"
                         />
                     </div>
@@ -127,9 +124,10 @@ const AddProduct = () => {
                         </label>
                         <input
                             type="text"
+                            defaultValue={cost}
                             placeholder="Enter the Product Category"
-                            {...register('cost', { required: true })}
-                            required
+                            {...register('cost')}
+
                             className="input input-bordered w-full"
                         />
                     </div>
@@ -140,9 +138,10 @@ const AddProduct = () => {
                         </label>
                         <input
                             type="text"
-                            placeholder="Location"
-                            {...register('margin', { required: true })}
-                            required
+                            defaultValue={margin}
+                            placeholder="Margin"
+                            {...register('margin')}
+
                             className="input input-bordered w-full"
                         />
                     </div>
@@ -154,9 +153,10 @@ const AddProduct = () => {
                     </label>
                     <input
                         type="text"
+                        defaultValue={discount}
                         placeholder="Discount"
-                        {...register('discount', { required: true })}
-                        required
+                        {...register('discount')}
+
                         className="input input-bordered w-full"
                     />
                 </div>
@@ -166,6 +166,7 @@ const AddProduct = () => {
                     </label>
                     <textarea
                         {...register('description')}
+                        defaultValue={description}
                         className="textarea textarea-bordered h-24 w-full"
                         placeholder="Description"
                     ></textarea>
@@ -176,18 +177,18 @@ const AddProduct = () => {
                         Image
                     </label>
                     <input
-                        {...register('image', { required: true })}
+                        {...register('image')}
                         type="file"
                         className="file-input w-full max-w-xs"
                     />
                 </div>
                 <button className="btn btn-success">
-                    Add Product <CiShop className="font-bold" />
+                    Update the Product <CiShop className="font-bold" />
                 </button>
             </form>
         </div>
-
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;
+
