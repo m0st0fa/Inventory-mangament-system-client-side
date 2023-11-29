@@ -1,10 +1,15 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import useAuth from "../../Hooks/useAuth";
 import SocialLogin from "../../Components/SocialLogin";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
+
     const { createUser } = useAuth()
 
     const handleSignUp = (e) => {
@@ -14,19 +19,34 @@ const SignUp = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
-
         console.log(name, email, photo, password);
-
         createUser(email, password)
             .then((result) => {
                 const user = result.user;
-                console.log("User signed up:", user);
+                // console.log("User signed up:", user);
+                axiosPublic.post('/users', user)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log('user added to the database')
+                            // reset();
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'User created successfully.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            navigate('/');
+                        }
+                    })
+
             })
             .catch((error) => {
                 console.error("Sign-up error:", error);
             });
+
     };
-  
+
 
     return (
         <div className="bg-gray-100 min-h-screen flex items-center justify-center">

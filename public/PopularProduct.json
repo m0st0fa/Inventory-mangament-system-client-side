@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "brand": "apple",
+        "image": "https://i.ibb.co/2c44h3S/apple.webp"
+    },
+    {
+        "id": 2,
+        "brand": "Samsung",
+        "image": "https://i.ibb.co/x8WqG8d/FH50MM3.webp"
+    },
+    {
+        "id": 3,
+        "brand": "Sony",
+        "image": "https://i.ibb.co/ZXKbJfn/sony.jpg"
+    },
+    {
+        "id": 4,
+        "brand": "Google",
+        "image": "https://i.ibb.co/85VbsyK/2010-google-new-google-logo-simple-version-technology-other-hd-art-wallpaper-preview.jpg"
+    },
+    {
+        "id": 5,
+        "brand": "Intel",
+        "image": "https://i.ibb.co/GVjkqHM/rEL2vj.jpg"
+    },
+    {
+        "id": 6,
+        "brand": "lg",
+        "image": "https://i.ibb.co/2ywwvsN/lg-logo-brand-phone-symbol-with-name-design-south-korea-mobile-illustration-with-black-background-fr.jpg"
+    }
+]
+

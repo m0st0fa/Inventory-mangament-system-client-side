@@ -46,7 +46,7 @@ const UpdateProduct = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} is updated to the menu.`,
+                    title: `${data.name} is updated to the productCollection.`,
                     showConfirmButton: false,
                     timer: 1500
                 });

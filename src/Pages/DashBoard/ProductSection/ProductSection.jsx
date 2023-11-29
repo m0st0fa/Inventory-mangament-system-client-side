@@ -45,7 +45,7 @@ const ProductSection = () => {
                         {/* head */}
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>Id</th>
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>quantity</th>
@@ -56,9 +56,9 @@ const ProductSection = () => {
                         </thead>
                         <tbody>
                             {
-                                product.map((item, index) => <tr key={item._id}>
+                                product.map((item) => <tr key={item._id}>
                                     <td>
-                                        {index + 1}
+                                        {item._id}
                                     </td>
                                     <td>
                                         {item.name}

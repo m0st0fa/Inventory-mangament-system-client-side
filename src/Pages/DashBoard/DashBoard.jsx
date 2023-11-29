@@ -1,22 +1,33 @@
-import { FaCartPlus, FaHome, FaShopify, FaTable, FaUtensils, } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { FaCartPlus, FaHome, FaShopify, FaTable, FaUser, FaUtensils, } from "react-icons/fa";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaCcAmazonPay } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
 import { FaRegPlusSquare } from "react-icons/fa";
+import useAuth from "../../Hooks/useAuth";
 
 
 
 
 const DashBoard = () => {
+    const { logout } = useAuth()
+    const handleSingOut = () => {
+        logout()
+            .then()
+            .catch(error => {
+                console.log(error)
+            })
+    }
     // TODO: GET THE ADMIN VALUE FROM THE DATABASE 
-    const isAdmin = true
+    const isManger = true;
+    const isAdmin = true;
     return (
         <div className="md:flex ">
             {/* dashboard side bar */}
             <div className=" min-h-screen text-black bg-orange-400">
                 <ul className="menu p-4 ">
+                    {/*----------------------------- this is isManger part --------------------------*/}
                     {
-                        isAdmin ?
+                        isManger && (
                             <>
                                 <li>
                                     <NavLink to="/dashboard/adminHome">
@@ -33,14 +44,14 @@ const DashBoard = () => {
                                 <li>
                                     <NavLink to="/dashboard/addProduct">
                                         <FaRegPlusSquare />
-                                       Add Product
+                                        Add Product
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/">
+                                    <Link to="/dashboard">
                                         <FaHome />
-                                         Home
-                                    </NavLink>
+                                        Home
+                                    </Link>
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/payment">
@@ -51,7 +62,7 @@ const DashBoard = () => {
                                 <li>
                                     <NavLink to="/dashboard/productSection">
                                         <FaTable />
-                                        All Product
+                                        Product Collection
                                     </NavLink>
                                 </li>
                                 <li>
@@ -61,16 +72,46 @@ const DashBoard = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/logout">
+                                    <NavLink onClick={handleSingOut} to='/login'>
                                         <GrLogout />
                                         LogOut
                                     </NavLink>
                                 </li>
+
                             </>
-                            :
-                            <></>
+                        )}
+                    {/* -----------------------this is Admin PART------------------------- */}
+                    <div className=" divider
+                    "></div>
+                    {
+                        isAdmin &&
+                        <>
+                            <li>
+                                <NavLink to="/dashboard/allShop">
+                                    <GrLogout />
+                                    all shop Information
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/allUser">
+                                    <FaUser />
+                                    all User Information
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/sellSummary">
+                                    <FaUser />
+                                    Admin Sell Summary
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/">
+                                    <GrLogout />
+                                    LogOut
+                                </NavLink>
+                            </li>
 
-
+                        </>
                     }
                 </ul>
             </div>

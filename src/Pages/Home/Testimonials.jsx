@@ -2,7 +2,7 @@
 const Testimonials = () => {
     return (
         <>
-            <div className=" bg-gray-400 rou2xl">
+            <div className="  rou2xl">
                 <div className=" md:flex items-center gap-4 p-4 rounded-2xl">
                     <div className="chat-image avatar">
                         <div className=" w-60 rounded-full">

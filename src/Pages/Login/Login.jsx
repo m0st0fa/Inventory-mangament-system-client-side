@@ -67,12 +67,7 @@ const Login = () => {
                 <div className="text-center mt-4">
                     <p className="text-gray-600">Do not Have an Account? <Link className="text-green-500 font-semibold" to='/signup'>Register here</Link></p>
                     <div className="flex justify-center mt-2">
-                        {/* <button onClick={googleSignIn} className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600 mx-2">
-                            Google
-                        </button>
-                        <button onClick={googleSignIn} className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 mx-2">
-                            Facebook
-                        </button> */}
+                       
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>
