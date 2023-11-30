@@ -15,6 +15,7 @@ import UpdateProduct from "../Pages/DashBoard/UpdateProduct";
 import AllUser from "../Pages/DashBoard/AllUser";
 import Popular from "../Pages/Home/Popular/Popular";
 import AllShopInfo from "../Pages/DashBoard/AllShopInfo";
+import Cart from "../Pages/DashBoard/Cart/Cart";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
             {
                 path: 'updateProduct/:id',
                 element: <UpdateProduct></UpdateProduct>,
-                loader: ({params}) => fetch(`http://localhost:5001/addProduct/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5001/addProduct/${params.id}`)
             },
             {
                 path: 'allUser',
@@ -70,7 +71,11 @@ const router = createBrowserRouter([
                 path: 'allShop',
                 element: <AllShopInfo></AllShopInfo>
 
-            }
+            },
+            {
+                path: 'cart',
+                element: <Cart></Cart>
+            },
         ]
     },
 ]);

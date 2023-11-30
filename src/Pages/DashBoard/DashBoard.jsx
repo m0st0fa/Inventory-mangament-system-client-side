@@ -1,15 +1,19 @@
-import { FaCartPlus, FaHome, FaShopify, FaTable, FaUser, FaUtensils, } from "react-icons/fa";
+import { FaCartPlus, FaHome, FaShopify, FaShoppingCart, FaTable, FaUser, FaUtensils, } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaCcAmazonPay } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
 import { FaRegPlusSquare } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
+import useAdmin from "../../Hooks/useAdmin";
+import useCart from "../../Hooks/useCart";
 
 
 
 
 const DashBoard = () => {
     const { logout } = useAuth()
+    const [cart] = useCart()
+
     const handleSingOut = () => {
         logout()
             .then()
@@ -17,13 +21,13 @@ const DashBoard = () => {
                 console.log(error)
             })
     }
-    // TODO: GET THE ADMIN VALUE FROM THE DATABASE 
+    // TODO: GET THE Manger
     const isManger = true;
-    const isAdmin = true;
+    const [isAdmin] = useAdmin()
     return (
         <div className="md:flex ">
             {/* dashboard side bar */}
-            <div className=" min-h-screen text-black bg-orange-400">
+            <div className=" min-h-screen text-black bg-blue-400">
                 <ul className="menu p-4 ">
                     {/*----------------------------- this is isManger part --------------------------*/}
                     {
@@ -52,6 +56,14 @@ const DashBoard = () => {
                                         <FaHome />
                                         Home
                                     </Link>
+                                </li>
+                                <li>
+                                <li>
+                                    <NavLink to="/dashboard/cart">
+                                        <FaShoppingCart />
+                                        My cart({cart.length})
+                                    </NavLink>
+                                </li>
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/payment">

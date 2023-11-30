@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react";
 import PopluarDetails from "./PopluarDetails";
+import useProduct from "../../../Hooks/useProduct";
 
 
 const Popular = () => {
-    const [card, setCart] = useState([])
-    useEffect(() => {
-        fetch('/public/PopularProduct.json')
-            .then(res => res.json())
-            .then(data => setCart(data))
-    }, [])
+    const [menu] = useProduct()
     return (
         <div>
             <h3 className=" text-5xl text-center font-bold text-red-500 mb-5"> Our Popluar category</h3>
 
-            <div className=" md: grid grid-cols-3 gap-5">
+            <div className=" md: grid grid-cols-3 gap-4">
                 {
-                    card.map(item => <PopluarDetails key={item.id} item={item}></PopluarDetails>)
+                    menu.map(item => <PopluarDetails key={item._id} item={item}></PopluarDetails>)
                 }
             </div>
         </div>

@@ -20,11 +20,14 @@ const NavBar = () => {
                     <li> <NavLink to='/'>Home</NavLink></li>
                     <li> <NavLink to='/createShop'>Create Store</NavLink></li>
                     <li> <NavLink to='/signup'>Register</NavLink></li>
+                    <li> <NavLink to='https://www.youtube.com/watch?v=E40UEoa19As'>Watch Demo</NavLink> </li>
                 </>
             ) : (
                 <>
                     <li> <NavLink to='/'>Home</NavLink></li>
                     <li> <NavLink to='/createShop'>Create Store</NavLink></li>
+                    {/* <li> <NavLink to='/dashboard'>Dashboard</NavLink></li> */}
+
                     <li> <NavLink to='/dashboard'>Dashboard</NavLink></li>
                 </>
             )}

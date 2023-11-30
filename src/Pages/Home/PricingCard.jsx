@@ -11,7 +11,8 @@ const PricingCard = () => {
     // console.log(cart)
     return (
         <div>
-            <h1 className=" text-5xl font-bold text-center">Chose Your Pricing Plan </h1>
+            <h1 className=" text-5xl font-bold text-center text-amber-600">Chose Your Pricing Plan </h1>
+            <hr />
             <div className=" grid md:grid-cols-3 gap-4">
                 {
                     cart.map(item => <PricingDetails key={item.id} item={item}></PricingDetails>)
