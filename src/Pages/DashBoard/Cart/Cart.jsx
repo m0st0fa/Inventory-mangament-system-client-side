@@ -39,7 +39,6 @@ const Cart = () => {
     return (
         <div>
             <div className="flex justify-evenly mb-8">
-                <h2 className="text-4xl">Items: {cart.length}</h2>
                 <h2 className="text-4xl">Total Price: {totalPrice}</h2>
                 {cart.length ? <Link to='/dashboard/payment'> <button className="btn btn-accent">Pay Now</button>
                 </Link> :
@@ -84,7 +83,7 @@ const Cart = () => {
                                     <button
                                         onClick={() => handleClickToDelete(item._id)}
                                         className="btn btn-ghost btn-lg">
-                                        <AiTwotoneDelete className="text-red-600 text-4xl font-bold"></AiTwotoneDelete>
+                                        <AiTwotoneDelete className="text-green-600 text-4xl font-bold"></AiTwotoneDelete>
                                     </button>
                                 </th>
                             </tr>)

@@ -16,6 +16,7 @@ import AllUser from "../Pages/DashBoard/AllUser";
 import Popular from "../Pages/Home/Popular/Popular";
 import AllShopInfo from "../Pages/DashBoard/AllShopInfo";
 import Cart from "../Pages/DashBoard/Cart/Cart";
+import Payment from "../Pages/DashBoard/Payment/Payment";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -76,6 +77,12 @@ const router = createBrowserRouter([
                 path: 'cart',
                 element: <Cart></Cart>
             },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
+
+            }
+
         ]
     },
 ]);
