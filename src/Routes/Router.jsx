@@ -17,6 +17,9 @@ import Popular from "../Pages/Home/Popular/Popular";
 import AllShopInfo from "../Pages/DashBoard/AllShopInfo";
 import Cart from "../Pages/DashBoard/Cart/Cart";
 import Payment from "../Pages/DashBoard/Payment/Payment";
+import PaymentHistory from "../Pages/DashBoard/Payment/PaymentHistory";
+import PricingCard from "../Pages/Home/PricingCard";
+import ShopLogo from "../Pages/DashBoard/ShopLogo";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -42,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: '/popular',
                 element: <Popular></Popular>
+            },
+            {
+                path: 'PricingCard',
+                element: <PricingCard></PricingCard>
             }
         ]
     },
@@ -69,6 +76,10 @@ const router = createBrowserRouter([
                 element: <AllUser></AllUser>
             },
             {
+                path: 'shopLogo',
+                element: <ShopLogo></ShopLogo>
+            },
+            {
                 path: 'allShop',
                 element: <AllShopInfo></AllShopInfo>
 
@@ -81,7 +92,11 @@ const router = createBrowserRouter([
                 path: 'payment',
                 element: <Payment></Payment>
 
-            }
+            },
+            {
+                path: 'paymentHistory',
+                element: <PaymentHistory></PaymentHistory>
+            },
 
         ]
     },

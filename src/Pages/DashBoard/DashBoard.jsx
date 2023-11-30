@@ -1,4 +1,4 @@
-import { FaCartPlus, FaHome, FaShopify, FaShoppingCart, FaTable, FaUser, FaUtensils, } from "react-icons/fa";
+import { FaCartPlus,  FaShopify, FaShoppingCart, FaTable, FaUser,  } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaCcAmazonPay } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
@@ -34,41 +34,15 @@ const DashBoard = () => {
                         isManger && (
                             <>
                                 <li>
-                                    <NavLink to="/dashboard/adminHome">
+                                    <NavLink to="/dashboard/shopLogo">
                                         <FaShopify />
                                         shop logo
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/menus">
-                                        <FaUtensils />
-                                        Manger Menus
-                                    </NavLink>
-                                </li>
-                                <li>
                                     <NavLink to="/dashboard/addProduct">
                                         <FaRegPlusSquare />
-                                        Add Product
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <Link to="/">
-                                        <FaHome />
-                                        Home
-                                    </Link>
-                                </li>
-                                <li>
-                                <li>
-                                    <NavLink to="/dashboard/cart">
-                                        <FaShoppingCart />
-                                        My cart({cart.length})
-                                    </NavLink>
-                                </li>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/payment">
-                                        <FaCcAmazonPay />
-                                        Payment
+                                        Products Section Part :Add Product
                                     </NavLink>
                                 </li>
                                 <li>
@@ -77,10 +51,31 @@ const DashBoard = () => {
                                         Product Collection
                                     </NavLink>
                                 </li>
+                               
                                 <li>
-                                    <NavLink to="/dashboard/sale">
+                                <li>
+                                    <Link to="/dashboard/cart">
+                                        <FaShoppingCart />
+                                        Product to Cart({cart.length})
+                                    </Link>
+                                </li>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/payment">
+                                        <FaCcAmazonPay />
+                                        CheckOut Payment
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/paymentHistory">
                                         <FaCartPlus />
                                         sale Summary
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/PricingCard">
+                                        <FaCartPlus />
+                                        Subscription & Payment
                                     </NavLink>
                                 </li>
                                 <li>

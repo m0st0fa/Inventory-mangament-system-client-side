@@ -1,8 +1,8 @@
 import Swal from "sweetalert2";
 import { AiTwotoneDelete } from "react-icons/ai";
-import useCart from "../../../hooks/useCart";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useCart from "../../../Hooks/useCart";
 
 
 const Cart = () => {
