@@ -13,7 +13,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const AddProduct = () => {
     const [shopData, setShopData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5001')
+        fetch('https://final-assigment-server.vercel.app')
             .then(res => res.json())
             .then(data => setShopData(data))
     }, [])

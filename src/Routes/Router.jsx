@@ -69,7 +69,7 @@ const router = createBrowserRouter([
             {
                 path: 'updateProduct/:id',
                 element: <UpdateProduct></UpdateProduct>,
-                loader: ({ params }) => fetch(`http://localhost:5001/addProduct/${params.id}`)
+                loader: ({ params }) => fetch(`https://final-assigment-server.vercel.app/addProduct/${params.id}`)
             },
             {
                 path: 'allUser',

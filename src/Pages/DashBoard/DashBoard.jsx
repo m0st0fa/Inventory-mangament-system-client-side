@@ -1,4 +1,4 @@
-import { FaCartPlus,  FaShopify, FaShoppingCart, FaTable, FaUser,  } from "react-icons/fa";
+import { FaCartPlus, FaShopify, FaShoppingCart, FaTable, FaUser, } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaCcAmazonPay } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
@@ -6,6 +6,7 @@ import { FaRegPlusSquare } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
 import useCart from "../../Hooks/useCart";
+import Footer from "../Shared/Footer";
 
 
 
@@ -51,14 +52,14 @@ const DashBoard = () => {
                                         Product Collection
                                     </NavLink>
                                 </li>
-                               
+
                                 <li>
-                                <li>
-                                    <Link to="/dashboard/cart">
-                                        <FaShoppingCart />
-                                        Product to Cart({cart.length})
-                                    </Link>
-                                </li>
+                                    <li>
+                                        <Link to="/dashboard/cart">
+                                            <FaShoppingCart />
+                                            Product to Cart({cart.length})
+                                        </Link>
+                                    </li>
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/payment">
@@ -111,13 +112,6 @@ const DashBoard = () => {
                                     Admin Sell Summary
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/">
-                                    <GrLogout />
-                                    LogOut
-                                </NavLink>
-                            </li>
-
                         </>
                     }
                 </ul>
@@ -125,6 +119,10 @@ const DashBoard = () => {
             {/* dashboard content  */}
             <div className="flex-1 p-10">
                 <Outlet></Outlet>
+                <div className="md:mt-60">
+                    <Footer></Footer>
+                </div>
+
             </div>
         </div>
     );

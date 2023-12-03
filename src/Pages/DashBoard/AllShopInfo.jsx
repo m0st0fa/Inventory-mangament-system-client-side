@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const AllShopInfo = () => {
     const [allShop, setAllShop] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5001/createShop')
+        fetch('https://final-assigment-server.vercel.app/createShop')
             .then(res => res.json())
             .then(data => setAllShop(data))
     }, [])
